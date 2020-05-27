@@ -174,6 +174,8 @@ class REST_WP_REST_Block_Types_Controller_Test extends WP_Test_REST_Post_Type_Co
 		$this->assertArrayHasKey( 'editor_style', $properties );
 		$this->assertArrayHasKey( 'style', $properties );
 		$this->assertArrayHasKey( 'parent', $properties );
+		$this->assertArrayHasKey( 'context', $properties );
+		$this->assertArrayHasKey( 'provides_context', $properties );
 	}
 
 	/**
@@ -271,20 +273,22 @@ class REST_WP_REST_Block_Types_Controller_Test extends WP_Test_REST_Post_Type_Co
 		$this->assertEquals( $data['is_dynamic'], $block_type->is_dynamic() );
 
 		$extra_fields = array(
-			'name'          => 'name',
-			'category'      => 'category',
-			'editor_script' => 'editor_script',
-			'script'        => 'script',
-			'editor_style'  => 'editor_style',
-			'style'         => 'style',
-			'supports'      => 'supports',
-			'title'         => 'title',
-			'icon'          => 'icon',
-			'description'   => 'description',
-			'keywords'      => 'keywords',
-			'parent'        => 'parent',
-			'styles'        => 'styleVariations',
-			'text_domain'   => 'textDomain',
+			'name'             => 'name',
+			'category'         => 'category',
+			'editor_script'    => 'editor_script',
+			'script'           => 'script',
+			'editor_style'     => 'editor_style',
+			'style'            => 'style',
+			'supports'         => 'supports',
+			'title'            => 'title',
+			'icon'             => 'icon',
+			'description'      => 'description',
+			'keywords'         => 'keywords',
+			'parent'           => 'parent',
+			'styles'           => 'styleVariations',
+			'text_domain'      => 'textDomain',
+			'context'          => 'context',
+			'provides_context' => 'providesContext',
 		);
 
 		foreach ( $extra_fields as $key => $extra_field ) {

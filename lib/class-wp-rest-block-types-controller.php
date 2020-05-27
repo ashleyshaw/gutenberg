@@ -231,20 +231,22 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 
 		$schema       = $this->get_item_schema();
 		$extra_fields = array(
-			'name'          => 'name',
-			'category'      => 'category',
-			'editor_script' => 'editor_script',
-			'script'        => 'script',
-			'editor_style'  => 'editor_style',
-			'style'         => 'style',
-			'supports'      => 'supports',
-			'title'         => 'title',
-			'icon'          => 'icon',
-			'description'   => 'description',
-			'keywords'      => 'keywords',
-			'parent'        => 'parent',
-			'styles'        => 'styleVariations',
-			'text_domain'   => 'textDomain',
+			'name'             => 'name',
+			'category'         => 'category',
+			'editor_script'    => 'editor_script',
+			'script'           => 'script',
+			'editor_style'     => 'editor_style',
+			'style'            => 'style',
+			'supports'         => 'supports',
+			'title'            => 'title',
+			'icon'             => 'icon',
+			'description'      => 'description',
+			'keywords'         => 'keywords',
+			'parent'           => 'parent',
+			'styles'           => 'styleVariations',
+			'text_domain'      => 'textDomain',
+			'context'          => 'context',
+			'provides_context' => 'providesContext',
 		);
 		foreach ( $extra_fields as $key => $extra_field ) {
 			if ( rest_is_field_included( $key, $fields ) ) {
@@ -448,6 +450,27 @@ class WP_REST_Block_Types_Controller extends WP_REST_Controller {
 					'default'     => array(),
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
+				),
+				'context'   => array(
+					'description' => __( 'Context values inherited by blocks of this type.', 'gutenberg' ),
+					'type'        => 'array',
+					'default'     => array(),
+					'items'       => array(
+						'type' => 'string',
+					),
+					'context'     => array( 'embed', 'view', 'edit' ),
+					'readonly'    => true,
+				),
+				'provides_context'   => array(
+					'description'          => __( 'Context provided by blocks of this type.', 'gutenberg' ),
+					'type'                 => 'object',
+					'properties'           => array(),
+					'additionalProperties' => array(
+						'type' => 'string',
+					),
+					'default'              => array(),
+					'context'              => array( 'embed', 'view', 'edit' ),
+					'readonly'             => true,
 				),
 			),
 		);
